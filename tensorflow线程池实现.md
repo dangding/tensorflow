@@ -282,7 +282,7 @@ RunQueue是基于数组实现的队列。它的特点是：
 - 只授受指针类型的元素，因此，可以直接利用元素是否为空，来表示状态；
 - 所有线程之间的同步通过，元素状态变量来实现；
 - back最后一个元素位置，front待插入新元素位置；
-- front和back的高位，用来进行操作计数，即front的push和back的pop，均在高位加1。当front==back时，若高位相同，则队列为空，若不同，则队列满；但eigen的RunQueue中，未用到该判断；
+- front和back的高位，用来进行操作计数，即front的push和back的pop，均在高位加1。但eigen的RunQueue中，未用到该判断；作用是解决ABA问题？
 - front和back采用原子操作，避免了字节对齐的问题；
 
 具体代码如下：
